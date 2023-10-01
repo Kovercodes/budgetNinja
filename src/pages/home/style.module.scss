@@ -1,0 +1,67 @@
+@import "/src/styles/variables.scss";
+
+.headline {
+  font-size: 50px;
+  font-weight: 800;
+  color: $black;
+
+  &__top {
+    display: block;
+    font-size: 30px;
+  }
+  &__bottom {
+    display: block;
+  }
+}
+
+.wrapper {
+  background-color: $white;
+  height: 100vh;
+  max-width: 100vw;
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register {
+  padding: 30px;
+  margin-top: 30px;
+
+  border-radius: 10px;
+  border: 2px solid $yellow;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  color: $black;
+
+  &__header {
+    font-size: 30px;
+    font-weight: 800;
+  }
+  &__text {
+    font-size: 18px;
+    font-weight: 800;
+
+    color: $gray;
+  }
+  &__button {
+    min-height: 44px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color: $yellow;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    padding: 5px 15px;
+  }
+}
