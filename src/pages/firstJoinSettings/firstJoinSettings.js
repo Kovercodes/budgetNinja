@@ -11,8 +11,8 @@ import { useNavigate } from "react-router-dom";
 
 const FirstJoinSettings = () => {
   const [name, setName] = useState(auth.currentUser.displayName);
-  const [totalMoney, setTotalMoney] = useState();
-  const [largePurMoney, setLargePurMoney] = useState();
+  const [totalMoney, setTotalMoney] = useState(0);
+  const [largePurMoney, setLargePurMoney] = useState(0);
   const email = auth.currentUser.email;
   const today = getDayOfYear();
   const date = today + 30;
