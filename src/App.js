@@ -17,6 +17,7 @@ function App() {
       window.location.pathname = "/welcome";
     });
   };
+
   return (
     <BrowserRouter>
       <Routes>

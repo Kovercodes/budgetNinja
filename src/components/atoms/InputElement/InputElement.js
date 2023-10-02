@@ -8,19 +8,20 @@ const InputElement = ({
   className,
   state,
   setState,
+  name,
+  type,
 }) => {
-  const uniqueID = Date.now;
   return (
     <section className={joinClasses(s.inputElement__container, className)}>
-      <label className={s.inputElement__label} htmlFor={uniqueID}>
+      <label className={s.inputElement__label} htmlFor={name}>
         {children}
       </label>
       <input
         className={s.inputElement}
-        type="text"
+        type={type}
         placeholder={placeholder}
-        id={uniqueID}
-        name={uniqueID}
+        id={name}
+        name={name}
         value={state}
         onChange={(e) => setState(e.target.value)}
       />
