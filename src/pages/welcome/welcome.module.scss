@@ -1,0 +1,30 @@
+@import "/src/styles/variables.scss";
+
+body {
+  max-height: 100vh;
+}
+
+.headline {
+  font-size: 50px;
+  font-weight: 800;
+  color: $black;
+
+  &__top {
+    display: block;
+    font-size: 30px;
+  }
+  &__bottom {
+    display: block;
+  }
+}
+
+.wrapper {
+  background-color: $white;
+  height: 100vh;
+  max-width: 100vw;
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
