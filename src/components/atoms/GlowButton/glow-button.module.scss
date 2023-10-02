@@ -1,0 +1,22 @@
+@import "../../../styles/variables.scss";
+.glowButton {
+  box-shadow: 0px 0px 20px 3px opacify($purple, $amount: 0.5);
+  border-radius: 10px;
+  background-color: $purple;
+  padding: 10px 25px;
+
+  font-size: 18px;
+  font-weight: 800;
+  color: $white;
+
+  border: none;
+  outline: none;
+
+  transition: all 0.1;
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0px 0px 20px 3px opacify($purple, $amount: 0.8);
+  }
+}

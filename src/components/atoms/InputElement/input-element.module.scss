@@ -1,0 +1,27 @@
+@import "../../../styles/variables.scss";
+.inputElement {
+  width: calc(100% - 30px);
+  padding: 10px 15px;
+
+  border-radius: 10px;
+  border: 2px solid $yellow;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  &:focus {
+    border: 2px solid $blue;
+  }
+
+  &__label {
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+}
