@@ -1,0 +1,33 @@
+@import "../../../styles/variables.scss";
+
+.remainder {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.smallText {
+  color: $gray;
+}
+
+.prefButton {
+  width: 32px;
+  height: 32px;
+  background-image: url(./pen.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border-radius: 100px;
+  background-color: $purple;
+
+  border: none;
+  outline: none;
+
+  transform: translateX(-10px);
+
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+}

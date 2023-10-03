@@ -1,0 +1,30 @@
+@import "../../../styles/variables.scss";
+
+.todayMoney {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &Box {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+.glowButton {
+  color: $black;
+  background-color: $white;
+
+  box-shadow: 0px 0px 20px 3px opacify($white, $amount: 0.5);
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0px 0px 20px 3px opacify($white, $amount: 0.8);
+  }
+}

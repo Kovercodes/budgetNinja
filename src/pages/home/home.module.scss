@@ -1,0 +1,36 @@
+@import "../../styles/variables.scss";
+
+.home {
+  &__pageWrapper {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: $yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &__topTextWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__preferencesBut {
+    font-size: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    background-image: url("./preferences.svg");
+
+    width: 24px;
+    height: 24px;
+  }
+
+  &__bottomBox {
+    background-color: $white;
+    border-radius: 25px 25px 0px 0px;
+    flex-grow: 10;
+  }
+}

@@ -4,7 +4,7 @@ import { joinClasses } from "../../../utils/joinClasses";
 
 const GlowButton = (props) => {
   return (
-    <button className={joinClasses(s.glowButton, props.className)} {...props}>
+    <button className={joinClasses(s.glowButton, props.className)}>
       {props.children}
     </button>
   );
