@@ -4,7 +4,7 @@ import Header2 from "../../components/atoms/Header2/Header2";
 import Container from "../../components/atoms/Container/Container";
 import InputElement from "../../components/atoms/InputElement/InputElement";
 import GlowButton from "../../components/atoms/GlowButton/GlowButton";
-import { addDoc, collection, doc, getDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs } from "firebase/firestore";
 import { db, auth } from "../../utils/firebaseConfig";
 import { getDayOfYear } from "../../utils/getDayOfYear";
 import { useNavigate } from "react-router-dom";
@@ -23,13 +23,54 @@ const FirstJoinSettings = () => {
 
   const userCollectionRef = collection(db, "users");
 
-  const userData = {
-    user: { name, email },
-    money: { total: totalMoney, largePur: largePurMoney },
-    date: { created: today, endPeriod: date },
-  };
+  let userData;
 
-  userDataExport = userData;
+  getDocs(userCollectionRef).then((snapshot) => {
+    let dbEmails = [];
+    snapshot.docs.forEach((doc) => {
+      dbEmails.push(
+        doc._document.data.value.mapValue.fields.account.mapValue.fields.email
+          .stringValue
+      );
+    });
+    console.log(dbEmails);
+    if (dbEmails.includes(email)) {
+      const rawUserData =
+        snapshot.docs[dbEmails.indexOf(email)]._document.data.value.mapValue
+          .fields;
+      userData = {
+        account: {
+          email: rawUserData.account.mapValue.fields.email.stringValue,
+          name: rawUserData.account.mapValue.fields.name.stringValue,
+        },
+        money: {
+          total: parseInt(rawUserData.money.mapValue.fields.total.stringValue),
+          largePur: parseInt(
+            rawUserData.money.mapValue.fields.largePur.stringValue
+          ),
+        },
+        date: {
+          created: parseInt(
+            rawUserData.date.mapValue.fields.created.integerValue
+          ),
+          endPeriod: parseInt(
+            rawUserData.date.mapValue.fields.endPeriod.integerValue
+          ),
+        },
+      };
+      userDataExport = userData;
+      navigate("/");
+    } else {
+      userData = {
+        account: { name, email },
+        money: {
+          total: totalMoney.toNumber(),
+          largePur: largePurMoney.toNumber(),
+        },
+        date: { created: today, endPeriod: date },
+      };
+    }
+  });
 
   const addUserToDB = async () => {
     console.log("added user", userData);

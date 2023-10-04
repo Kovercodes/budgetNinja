@@ -15,19 +15,24 @@ import { doc, getDoc } from "firebase/firestore";
 
 const Home = () => {
   const moneyForToday = () => {
-    moneyDaily(userData.money.total, getDayOfYear(), userData.date.endPeriod);
+    return Math.floor(
+      moneyDaily(userData.money.total, getDayOfYear(), userData.date.endPeriod)
+    );
   };
+  console.log(moneyForToday());
+
+  console.log("userData", userData);
 
   return (
     <div className={s.home__pageWrapper}>
       <Container>
         <section className={s.home__topTextWrapper}>
-          <RegText>Добрый день, {userData.user.name}</RegText>
+          <RegText>Добрый день, {userData.account.name}</RegText>
           <button className={s.home__preferencesBut}>Настройки</button>
         </section>
         <section className={s.home__todayBox}>
           <Header2>На сегодня</Header2>
-          <TodayMoney money={moneyDaily()} buttonText="Записать трату" />
+          <TodayMoney money={moneyForToday()} buttonText="Записать трату" />
         </section>
       </Container>
       <div className={s.home__bottomBox}>
