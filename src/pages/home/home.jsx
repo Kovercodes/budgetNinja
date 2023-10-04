@@ -7,24 +7,36 @@ import RegText from "../../components/atoms/RegText/RegText";
 import Balances from "../../components/creatures/Balances/Balances";
 import Remainder from "../../components/molecules/Remainder/Remainder";
 import TodayMoney from "../../components/molecules/TodayMoney/TodayMoney";
+import { userDataExport as userData } from "../firstJoinSettings/firstJoinSettings";
+import { moneyDaily } from "../../backend/backend";
+import { getDayOfYear } from "../../utils/getDayOfYear";
 import s from "./home.module.scss";
+import { doc, getDoc } from "firebase/firestore";
 
 const Home = () => {
+  const moneyForToday = () => {
+    moneyDaily(userData.money.total, getDayOfYear(), userData.date.endPeriod);
+  };
+
   return (
     <div className={s.home__pageWrapper}>
       <Container>
         <section className={s.home__topTextWrapper}>
-          <RegText>Добрый день, Александр</RegText>
+          <RegText>Добрый день, {userData.user.name}</RegText>
           <button className={s.home__preferencesBut}>Настройки</button>
         </section>
         <section className={s.home__todayBox}>
           <Header2>На сегодня</Header2>
-          <TodayMoney money={350} buttonText="Записать трату" />
+          <TodayMoney money={moneyDaily()} buttonText="Записать трату" />
         </section>
       </Container>
       <div className={s.home__bottomBox}>
         <Container>
-          <Balances totalMoney={4500} bigPurMoney={4000} days={22} />
+          <Balances
+            totalMoney={userData.money.total}
+            bigPurMoney={userData.money.largePur}
+            days={userData.date.endPeriod - getDayOfYear()}
+          />
         </Container>
       </div>
     </div>

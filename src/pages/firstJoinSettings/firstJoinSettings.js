@@ -4,10 +4,12 @@ import Header2 from "../../components/atoms/Header2/Header2";
 import Container from "../../components/atoms/Container/Container";
 import InputElement from "../../components/atoms/InputElement/InputElement";
 import GlowButton from "../../components/atoms/GlowButton/GlowButton";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../../utils/firebaseConfig";
 import { getDayOfYear } from "../../utils/getDayOfYear";
 import { useNavigate } from "react-router-dom";
+
+let userDataExport;
 
 const FirstJoinSettings = () => {
   const [name, setName] = useState(auth.currentUser.displayName);
@@ -21,17 +23,17 @@ const FirstJoinSettings = () => {
 
   const userCollectionRef = collection(db, "users");
 
+  const userData = {
+    user: { name, email },
+    money: { total: totalMoney, largePur: largePurMoney },
+    date: { created: today, endPeriod: date },
+  };
+
+  userDataExport = userData;
+
   const addUserToDB = async () => {
-    console.log("added user", {
-      user: { name, email },
-      money: { total: totalMoney, largePur: largePurMoney },
-      date: { created: today, endMonth: date },
-    });
-    await addDoc(userCollectionRef, {
-      user: { name, email },
-      money: { total: totalMoney, largePur: largePurMoney },
-      date,
-    }).then(() => {
+    console.log("added user", userData);
+    await addDoc(userCollectionRef, userData).then(() => {
       navigate("/");
     });
   };
@@ -72,3 +74,4 @@ const FirstJoinSettings = () => {
 };
 
 export default FirstJoinSettings;
+export { userDataExport };
