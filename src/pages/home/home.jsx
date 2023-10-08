@@ -8,7 +8,7 @@ import Balances from "../../components/creatures/Balances/Balances";
 import Remainder from "../../components/molecules/Remainder/Remainder";
 import TodayMoney from "../../components/molecules/TodayMoney/TodayMoney";
 import { userDataExport as userData } from "../firstJoinSettings/firstJoinSettings";
-import { moneyDaily } from "../../backend/backend";
+import { moneyDaily } from "../../utils/moneyDaily";
 import { getDayOfYear } from "../../utils/getDayOfYear";
 import s from "./home.module.scss";
 import { doc, getDoc } from "firebase/firestore";
