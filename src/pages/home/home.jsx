@@ -1,17 +1,14 @@
 import React from "react";
 import Container from "../../components/atoms/Container/Container";
-import GlowButton from "../../components/atoms/GlowButton/GlowButton";
 import Header2 from "../../components/atoms/Header2/Header2";
-import MoneyText from "../../components/atoms/MoneyText/MoneyText";
 import RegText from "../../components/atoms/RegText/RegText";
 import Balances from "../../components/creatures/Balances/Balances";
-import Remainder from "../../components/molecules/Remainder/Remainder";
+import ExpenseForm from "../../components/molecules/ExpenseForm/ExpenseForm";
 import TodayMoney from "../../components/molecules/TodayMoney/TodayMoney";
-import { userDataExport as userData } from "../firstJoinSettings/firstJoinSettings";
-import { moneyDaily } from "../../utils/moneyDaily";
 import { getDayOfYear } from "../../utils/getDayOfYear";
+import { moneyDaily } from "../../utils/moneyDaily";
+import { userDataExport as userData } from "../firstJoinSettings/firstJoinSettings";
 import s from "./home.module.scss";
-import { doc, getDoc } from "firebase/firestore";
 
 const Home = () => {
   const moneyForToday = () => {
@@ -42,6 +39,7 @@ const Home = () => {
             bigPurMoney={userData.money.largePur}
             days={userData.date.endPeriod - getDayOfYear()}
           />
+          <ExpenseForm />
         </Container>
       </div>
     </div>
