@@ -1,0 +1,20 @@
+@import "../../../styles/variables.scss";
+.popup {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: transparentize($black, 0.25);
+
+  padding: 0 30px;
+
+  display: flex;
+  align-items: center;
+
+  &__container {
+    background-color: $blue;
+    padding: 30px;
+
+    border-radius: 10px;
+  }
+}

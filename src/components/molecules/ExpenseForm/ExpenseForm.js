@@ -10,19 +10,11 @@ const ExpenseForm = () => {
   const [isFromTotal, setIsFromTotal] = useState(true);
   const [isFromLargePur, setIsFromLargePur] = useState(false);
 
-  useEffect(() => {
-    if (isFromTotal && isFromLargePur) {
-      setIsFromLargePur(false);
-    }
-    if (!isFromTotal && !isFromLargePur) {
-      setIsFromTotal(true);
-    }
-  }, [isFromTotal, isFromLargePur]);
-
   return (
     <div className={s.expense}>
       <Header2>Записать трату</Header2>
       <InputElement
+        type="number"
         state={expense}
         setState={setExpense}
         className={s.expense__input}

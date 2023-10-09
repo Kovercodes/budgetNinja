@@ -17,6 +17,7 @@
       display: block;
       width: 25px !important;
       height: 25px;
+      flex-shrink: 0;
 
       border-radius: 10px;
       border: 2px solid $purple;

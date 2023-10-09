@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "../../components/atoms/Container/Container";
 import Header2 from "../../components/atoms/Header2/Header2";
+import Popup from "../../components/atoms/Popup/Popup";
 import RegText from "../../components/atoms/RegText/RegText";
 import Balances from "../../components/creatures/Balances/Balances";
 import ExpenseForm from "../../components/molecules/ExpenseForm/ExpenseForm";
@@ -39,9 +40,11 @@ const Home = () => {
             bigPurMoney={userData.money.largePur}
             days={userData.date.endPeriod - getDayOfYear()}
           />
-          <ExpenseForm />
         </Container>
       </div>
+      <Popup visible={true}>
+        <ExpenseForm />
+      </Popup>
     </div>
   );
 };
