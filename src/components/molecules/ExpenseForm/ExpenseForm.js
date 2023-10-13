@@ -30,10 +30,6 @@ const ExpenseForm = () => {
         setSelected={setMoneySource}
         name="moneySource"
       />
-      <div className={s.expense__buttonBox}>
-        <GlowButton className={s.expense__quit}>Отмена</GlowButton>
-        <GlowButton className={s.expense__submit}>Готово</GlowButton>
-      </div>
     </div>
   );
 };

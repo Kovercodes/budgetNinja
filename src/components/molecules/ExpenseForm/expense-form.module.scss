@@ -13,31 +13,4 @@
   &__input label {
     display: none;
   }
-
-  &__buttonBox {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-
-    & * {
-      flex-grow: 10;
-    }
-  }
-
-  &__quit {
-    font-size: 0;
-    max-width: 38px;
-    background-image: url("./cross.svg");
-    background-repeat: no-repeat;
-    background-position: 50%;
-
-    background-color: $red;
-    box-shadow: 0px 0px 20px 3px opacify($red, $amount: 0.5);
-  }
-
-  &__submit {
-    color: $black;
-    background-color: $yellow;
-    box-shadow: 0px 0px 20px 3px opacify($yellow, $amount: 0.5);
-  }
 }

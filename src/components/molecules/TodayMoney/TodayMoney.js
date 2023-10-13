@@ -7,7 +7,9 @@ const TodayMoney = (props) => {
   return (
     <div className={s.todayMoneyBox}>
       <MoneyText>{props.money}</MoneyText>
-      <GlowButton className={s.glowButton}>{props.buttonText}</GlowButton>
+      <GlowButton className={s.glowButton} onClick={props.onClick}>
+        {props.buttonText}
+      </GlowButton>
     </div>
   );
 };

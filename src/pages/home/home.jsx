@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Container from "../../components/atoms/Container/Container";
 import Header2 from "../../components/atoms/Header2/Header2";
 import Popup from "../../components/atoms/Popup/Popup";
@@ -12,6 +12,8 @@ import { userDataExport as userData } from "../firstJoinSettings/firstJoinSettin
 import s from "./home.module.scss";
 
 const Home = () => {
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
   const moneyForToday = () => {
     return Math.floor(
       moneyDaily(userData.money.total, getDayOfYear(), userData.date.endPeriod)
@@ -30,7 +32,11 @@ const Home = () => {
         </section>
         <section className={s.home__todayBox}>
           <Header2>На сегодня</Header2>
-          <TodayMoney money={moneyForToday()} buttonText="Записать трату" />
+          <TodayMoney
+            money={moneyForToday()}
+            buttonText="Записать трату"
+            onClick={() => setIsPopupVisible(true)}
+          />
         </section>
       </Container>
       <div className={s.home__bottomBox}>
@@ -42,7 +48,7 @@ const Home = () => {
           />
         </Container>
       </div>
-      <Popup visible={true}>
+      <Popup visible={isPopupVisible} setVisible={setIsPopupVisible}>
         <ExpenseForm />
       </Popup>
     </div>
