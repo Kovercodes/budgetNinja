@@ -4,12 +4,13 @@ import GlowButton from "../../atoms/GlowButton/GlowButton";
 import Header2 from "../../atoms/Header2/Header2";
 import InputElement from "../../atoms/InputElement/InputElement";
 import s from "./expense-form.module.scss";
+import RadioGroup from "../RadioGroup/RadioGroup";
 
 const ExpenseForm = () => {
   const [expense, setExpense] = useState(0);
-  const [isFromTotal, setIsFromTotal] = useState(true);
-  const [isFromLargePur, setIsFromLargePur] = useState(false);
+  const [moneySource, setMoneySource] = useState("total");
 
+  console.log(moneySource);
   return (
     <div className={s.expense}>
       <Header2>Записать трату</Header2>
@@ -20,20 +21,15 @@ const ExpenseForm = () => {
         className={s.expense__input}
         placeholder="Например, 250 рублей"
       ></InputElement>
-      <Checkbox
-        nameId="totalBalance"
-        state={isFromTotal}
-        setState={setIsFromTotal}
-      >
-        Из общего баланса
-      </Checkbox>
-      <Checkbox
-        nameId="largePurBalance"
-        state={isFromLargePur}
-        setState={setIsFromLargePur}
-      >
-        Из баланса на крупные покупки
-      </Checkbox>
+      <RadioGroup
+        options={[
+          { label: "Из общего баланса", value: "total" },
+          { label: "Из баланса на крупные покупки", value: "largePur" },
+        ]}
+        selected={moneySource}
+        setSelected={setMoneySource}
+        name="moneySource"
+      />
       <div className={s.expense__buttonBox}>
         <GlowButton className={s.expense__quit}>Отмена</GlowButton>
         <GlowButton className={s.expense__submit}>Готово</GlowButton>
